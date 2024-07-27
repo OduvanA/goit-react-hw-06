@@ -2,17 +2,14 @@ import { FaPhone } from "react-icons/fa6";
 import { IoPerson } from "react-icons/io5";
 import css from "./Contact.module.css"
 import { useDispatch, useSelector } from "react-redux";
+import { change } from "../../redux/store";
 
 export default function Contact() {
   const dispatch = useDispatch();
   const contact = useSelector((state) => state.contact);
 
   const handleDelete = () => {
-    dispatch({
-      type: 'contact/changeContact',
-      payload: { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-
-    })
+    dispatch(change({ id: 'id-3', name: 'Eden Clements', number: '645-17-79' }))
   }
   
 
