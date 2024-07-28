@@ -1,17 +1,12 @@
 import { FaPhone } from "react-icons/fa6";
 import { IoPerson } from "react-icons/io5";
 import css from "./Contact.module.css"
-import { useDispatch, useSelector } from "react-redux";
-import { change } from "../../redux/store";
+import { useDispatch } from "react-redux";
+import { deleteContact } from "../../redux/contactsSlice";
 
-export default function Contact() {
+
+export default function Contact({contact}) {
   const dispatch = useDispatch();
-  const contact = useSelector((state) => state.contact);
-
-  const handleDelete = () => {
-    dispatch(change({ id: 'id-3', name: 'Eden Clements', number: '645-17-79' }))
-  }
-  
 
   return (
     <div className={css.container}>
@@ -20,7 +15,10 @@ export default function Contact() {
         <p><FaPhone className={css.icon} size="14" />{contact.number}</p> 
       </div>
       
-      <button className={css.button} onClick={handleDelete} >Delete</button>
+      <button className={css.button}
+        type='button'
+        onClick={() => dispatch(deleteContact(contact.id))
+      } >Delete</button>
     </div>
   )
 
